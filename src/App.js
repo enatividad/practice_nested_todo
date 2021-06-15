@@ -1,8 +1,8 @@
+import TodoPage from './pages/TodoPage';
+
 function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <TodoPage />
   );
 }
 
