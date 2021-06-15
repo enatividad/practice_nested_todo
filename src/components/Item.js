@@ -17,6 +17,7 @@ export default function Item({ item }) {
   };
   const toggle = checked => {
     item.completed = checked;
+    recurseToggle(item.items, checked);
     const newRootItem = { ...rootItem };
     LocalList.setValue(newRootItem);
     setRootItem(newRootItem);
@@ -48,4 +49,11 @@ export default function Item({ item }) {
       ))}
     </div>
   );
+}
+
+function recurseToggle(items, checked) {
+  for (const item of items) {
+    item.completed = checked;
+    recurseToggle(item.items, checked);
+  }
 }
