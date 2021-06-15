@@ -8,7 +8,8 @@ export default function Item({ item }) {
   const { rootItem, setRootItem } = useContext(Context);
   const add = () => {
     const name = prompt('Please put name.') || `todo: ${parseInt(Math.random() * 100)}`;
-    const subItem = { name, completed: false, items: [] };
+    const subItem = { id: Date.now(), name, completed: false, items: [] };
+    if (item.id) subItem.parentId = item.id;
     const newRootItem = { ...rootItem };
     item.items.push(subItem);
     LocalList.setValue(newRootItem);
